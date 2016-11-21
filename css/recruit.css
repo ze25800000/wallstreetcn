@@ -1,0 +1,427 @@
+body {
+    background: #ffffff;!important;
+}
+/*********************header*********************/
+header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,.2);
+    background-color: #ffffff;
+    z-index: 99;
+}
+header .hcontainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+header .img {
+    float: left;
+    line-height: 53px;
+    margin-right: 200px;
+}
+header ul {
+    float: left;
+}
+header ul li {
+    float: left;
+}
+header ul li a {
+    color: #2d2d2d;
+    line-height: 60px;
+    margin-right: 50px;
+    font-size: 15px;
+}
+header ul li .on {
+    color: #1482f0;
+}
+header ul li:last-child a{
+    color: #e8471b;
+}
+header ul li:last-child {
+    position: relative;
+}
+header ul li:last-child span {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 40px;
+    width: 38px;
+    height: 15px;
+    background-color: #e8471b;
+    color: #f3f3f3;
+    font-size: 14px;
+    text-align: center;
+    line-height: 15px;
+}
+header ul li:last-child::before {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: 60px;
+    width: 1px;
+    height: 5px;
+    border-top: 9px solid #e8471b;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+/*********************banner**********************/
+.banner {
+    width: 100%;
+    height: 656px;
+    background: url("../img/banner2.jpg") no-repeat;
+    margin-top: 60px;
+    text-align: center;
+
+}
+.banner p{
+    padding-top: 260px;
+    font-size: 20px;
+    color: #ffffff;
+}
+.banner h1 {
+    font-size: 60px;
+    font-weight: normal;
+    color: #ffffff;
+}
+/*********************WhoWeAre********************/
+.whoweare {
+    width: 1140px;
+    height: 500px;
+    margin: 90px auto;
+    text-align: center;
+}
+h2 {
+    font-size: 48px;
+    color: #1482f0;
+    font-weight:300;
+}
+h1 {
+    font-size: 55px;
+    color: #676767;
+    font-weight: normal;
+    margin-top: -14px;
+}
+p {
+    font-size: 18px;
+    color: #333333;
+    font-weight: 300;
+}
+.whoweare ul {
+    margin-top: 25px;
+}
+.whoweare ul li{
+    width: 220px;
+    height: 220px;
+    float: left;
+}
+.whoweare ul li .out {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: #1482f0;
+    position: relative;
+    cursor: pointer;
+}
+.whoweare ul li .circle {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 210px;
+    height: 210px;
+    border: 4px solid #1482f0;
+    border-radius: 50%;
+    transition:all ease 0.5s ;
+}
+.whoweare ul li .out div{
+    color: #ffffff;
+    font-size: 75px;
+    line-height: 220px;
+    transition:all ease 0.5s ;
+}
+.whoweare ul li .circle:hover {
+    transform: scale(1.1);
+}
+.whoweare ul li .out:hover div{
+    transform: scale(1.4);
+}
+.whoweare ul li+li {
+    margin-left: 74px;
+}
+.whoweare ul li h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #676767;
+    margin-top: 25px;
+}
+.whoweare ul li p {
+    font-size: 14px;
+    line-height: 26px;
+}
+/*********************OurVision*******************/
+.ourvision {
+    width: 100%;
+    height: 490px;
+    margin: 160px auto;
+    text-align: center;
+    position: relative;
+}
+.ourvision .cover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 336px;
+}
+.ourvision .cover .window {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 500px;
+    height: 336px;
+    margin-left: -250px;
+    background: url("../img/ourvision-1.jpg") no-repeat;
+}
+.ourvision .cover .arrow {
+    background: url("../img/left-arrow.png") no-repeat;
+    width: 50px;
+    height: 94px;
+    position: absolute;
+    top: 120px;
+    left: -253px;
+}
+.ourvision .cover .arrow-right {
+    background: url("../img/right-arrow.png") no-repeat;
+    top: 120px;
+    left: 700px;
+}
+/*********************OurTeam*********************/
+.ourteam {
+    width: 100%;
+    height: 700px;
+    margin: 160px auto;
+    text-align: center;
+    position: relative;
+}
+.ourteam .people {
+    width: 1132px;
+    height: 527px;
+    margin: 0 auto;
+    position: relative;
+}
+.ourteam ul li {
+    padding-top: 120px;
+}
+.ourteam ul li .frame {
+    box-sizing: border-box;
+    position: relative;
+    /*top: 70px;*/
+    width: 544px;
+    background-color: #f8f8f8;
+    padding: 25px;
+}
+.ourteam ul li .frame img {
+    width: 133px;
+    height: 133px;
+    border-radius: 50%;
+}
+.ourteam ul li .frame .img {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 133px;
+    height: 133px;
+    border-radius: 50%;
+    /*overflow: hidden;*/
+    padding: 5px;
+    background-color: #f8f8f8;
+}
+.ourteam ul li .frame .name {
+    position: absolute;
+    top: 15px;
+    right: 7px;
+    width: 120px;
+    height: 54px;
+}
+.ourteam ul li .frame .name span {
+    font-weight: bold;
+    display: block;
+    font-size: 30px;
+    color: #0078d0;
+}
+.ourteam ul li .frame .name em {
+    font-size: 16px;
+    font-weight:bold;
+}
+.ourteam ul li .frame p {
+    margin-top: 60px;
+    text-align: left;
+    font-size: 14px;
+}
+.ourteam .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.ourteam .right li .frame .img {
+    top: -70px;
+    left: 400px;
+}
+.ourteam .right li .frame .name {
+    top: 15px;
+    left: 15px;
+}
+/*********************WorkingWithUs***************/
+.workingwithus {
+    width: 100%;
+    text-align: center;
+}
+.workingwithus .content {
+    width: 1152px;
+    margin: 15px auto;
+}
+.workingwithus .content a {
+    color: #0078d0;
+    font-weight: bold;
+    display: inline-block;
+}
+.workingwithus .content p {
+    font-size: 16px;
+}
+.workingwithus .con {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.workingwithus .img {
+    margin-top: 165px;
+    margin-bottom: 50px;
+    width: 520px;
+    height: 195px;
+    overflow: hidden;
+}
+.workingwithus .left {
+    text-align: right;
+    width: 520px;
+    float: left;
+}
+.workingwithus .middle {
+    width: 31px;
+    height: 241px;
+    float: left;
+    padding: 0 40px;
+}
+.workingwithus img {
+    transition: all ease 0.5s;
+}
+.workingwithus .left img:hover {
+    transform: scale(1.2);
+}
+.workingwithus .right img:hover {
+    transform: scale(1.2);
+}
+.workingwithus .right {
+    text-align: left;
+    width: 520px;
+    float: left;
+}
+.workingwithus .right .img:first-child {
+    margin-top: 0;
+}
+/*********************HowToApply******************/
+.howtoapply {
+    width: 100%;
+    height: 835px;
+    background-color: #f2f6f9;
+    text-align: center;
+}
+.howtoapply h2 {
+    padding-top: 115px;
+    font-size: 48px;
+    color: #333333;
+}
+.howtoapply h1 {
+    font-size: 60px;
+    color: #0078d0;
+}
+.howtoapply p {
+    font-size: 18px;
+}
+.howtoapply p a{
+    color: #0078d0;
+}
+.howtoapply ul {
+    width: 914px;
+    margin: 70px auto;
+    text-align: left;
+}
+.howtoapply ul li {
+    float: left;
+    margin-bottom: 50px;
+}
+.howtoapply ul li+li {
+    margin-left: 210px;
+}
+.howtoapply ul li:nth-child(4) {
+    margin-left: 0px;
+}
+.howtoapply ul li:nth-child(5) {
+    margin-left: 580px;
+}
+/*********************Connect*********************/
+.connect {
+    width: 100%;
+    text-align: center;
+}
+.connect h1 {
+    margin-top: 107px;
+    color: #e8471b;
+    font-size: 50px;
+}
+.connect p {
+    font-size: 28px;
+    margin-top: 40px;
+}
+.connect img {
+    margin-top: 28px;
+    width: 150px;
+}
+.connect .recruit {
+    margin-top: 20px;
+    font-size: 28px;
+}
+.connect .with {
+    margin-top: 130px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #444444;
+}
+.connect ul {
+    margin-top: 15px;
+}
+.connect ul li {
+    display: inline-block;
+    margin-right: 25px;
+}
+.connect ul li a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    background-color: #444444;
+    color: #ffffff;
+    font-size: 28px;
+}
+.connect p a {
+    color: #0078d0;
+}
+.connect i {
+    display: block;
+    font-size: 14px;
+    color: #828282;
+    margin-top: 45px;
+}

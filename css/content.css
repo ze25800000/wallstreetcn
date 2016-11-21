@@ -1,0 +1,335 @@
+.s-content {
+    width: 100%;
+    margin: 17px auto;
+}
+.s-left {
+    width: 160px;
+    float: left;
+}
+.s-left .label{
+    width: 160px;
+    background-color: #ffffff;
+}
+.s-left .label span {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    border-bottom:1px solid #EBEBEB;
+    padding-left:18px;
+    font-size: 14px;
+    color: #333333;
+    box-sizing: border-box;
+}
+.s-left .label span img {
+    margin-bottom: 14px;
+    margin-right: 5px;
+}
+.s-left .label p {
+    padding: 16px 16px 7px 16px;
+}
+.s-left .label p i {
+    display: inline-block;
+    font-size: 12px;
+    width: 36px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #f0f2f5;
+    border-radius: 3px;
+    margin: 0 10px 10px 0;
+}
+.s-left .pinglun {
+    margin-top: 17px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+}
+.s-left .pinglun a {
+    color: #333333;
+    display: block;
+    line-height: 48px;
+    font-size: 14px;
+}
+.s-left .pinglun a i {
+    font-size: 18px;
+    margin-right: 15px;
+    color: #999999;
+}
+.s-left .pinglun a:first-child {
+    border-bottom:1px solid #EBEBEB;
+}
+.s-left .pinglun a:hover,.s-left .pinglun a:hover i {
+    color: #1482f0;
+}
+.s-left .page {
+    width: 100%;
+    margin-top: 17px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 0 13px 13px;
+}
+.s-left .page p {
+    line-height: 40px;
+    color: #999999;
+}
+.s-left .page a {
+    line-height: 23px;
+    color: #333333;
+}
+.s-left .page a:hover {
+    color: #1482f0;
+}
+.s-left .share {
+    width: 100%;
+    margin-top: 17px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding:0 0 5px 0;
+}
+.s-left .share p {
+    line-height: 50px;
+    width: 100%;
+    border-bottom:1px solid #EBEBEB;
+    padding: 0 16px;
+}
+.s-left .share a {
+    font-size: 14px;
+    line-height: 40px;
+    display: block;
+    text-indent: 20px;
+    color: #333333;
+}
+.s-left .share a i {
+    font-size: 24px;
+    color: #e61e1e;
+    margin-right: 10px;
+}
+.s-left .share a:hover {
+    color: #e61e1e;
+}.s-left .share a:hover {
+    color: #e61e1e;
+}
+.s-left .share a:last-child i {
+    color: #3cbe41;
+}
+.s-left .share a:last-child:hover{
+    color: #3cbe41;
+}
+
+.s-middle {
+    width: 660px;
+    float: left;
+    margin: 0 20px;
+    background-color: #ffffff;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.s-middle .title {
+
+}
+.s-middle h1 {
+    color: #333333;
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: normal;
+    width: 100%;
+}
+.s-middle p {
+    width: 100%;
+    font-size: 14px;
+    color: #999999;
+    line-height: 45px;
+    /*border-bottom: 1px solid #EBEBEB;*/
+}
+.s-middle p i {
+    margin-right: 10px;
+    color: #999;
+    font-size: 14px;
+    vertical-align: top;
+}
+.s-middle p span {
+    float: left;
+}
+.s-middle p em {
+    float: right;
+    color: #333333;
+}
+.s-middle p .shuxian{
+    color: #bfbfbf;
+    margin: 0 15px;
+    font-size: 10px;
+    vertical-align: middle;
+}
+.s-right {
+    width: 340px;
+    float: left;
+}
+.s-right .editor {
+    width: 100%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 17px;
+}
+.s-right .editor .name img {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+}
+.s-right .editor .name a span {
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    display: inline-block;
+}
+.s-right .editor .name a span:hover {
+    color: #1482f0;
+}
+.s-right .editor .name p {
+    font-size: 13px;
+    color: #666;
+    line-height: 50px;
+}
+.s-right .editor .fans {
+    width: 100%;
+}
+.s-right .editor .fans li{
+    float: left;
+    margin-right: 30px;
+}
+.s-right .editor .fans li em{
+    display: block;
+    font-size: 12px;
+    color: #999999;
+    line-height: 24px;
+}
+.s-right .editor .fans li i{
+    display: block;
+    font-size: 18px;
+    color: #333333;
+}
+.s-right .editor .fans li:last-child {
+    margin:10px 0 0 83px;
+}
+.s-right .editor .fans li:last-child a:hover {
+    color: #ffffff;
+    background-color: #1482f0;
+}
+.s-right .editor .fans li:last-child a {
+    display: inline-block;
+    width: 76px;
+    line-height: 32px;
+    border-radius: 16px;
+    border:1px solid #1482f0;
+    color: #1482f0;
+    text-align: center;
+}
+
+.s-right .editor .box p {
+    font-size: 14px;
+    color: #333333;
+    line-height: 50px;
+    border-bottom:1px solid #EBEBEB;
+}
+.s-right .editor .box ul li {
+    position: relative;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.s-right .editor .box ul li a{
+    color: #333333;
+    line-height: 23px;
+}
+.s-right .editor .box ul li a:hover{
+    color: #1482f0;
+}
+.s-right .editor .box ul li::before {
+    content: '.';
+    position: absolute;
+    top: -39px;
+    left: 0;
+    font-size: 50px;
+    color: #1482f0;
+}
+.s-right .recommend {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 17px;
+}
+.s-right .recommend h4{
+    color: #333333;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-left: 17px;
+}
+.s-right .recommend h4 i {
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #1482f0;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.s-right .recommend ul{
+    width: 100%;
+}
+.s-right .recommend li {
+    border-top: 1px solid #ebebeb;
+    border-bottom:1px solid #ebebeb;
+    height: 100px;
+    margin-bottom: 20px;
+    clear: both;
+}
+.s-right .recommend img{
+    float: left;
+}
+
+.s-right .recommend .con{
+    box-sizing: border-box;
+    width: 235px;
+    float: left;
+    padding: 10px;
+}
+.s-right .recommend ul li a:hover {
+    color: #1482f0;
+}
+.s-right .recommend .con h3:hover {
+    color: #1482f0;
+}
+.s-right .recommend .con h3 {
+    font-size: 14px;
+    color: #414042;
+    font-weight: normal;
+}
+.s-right .recommend .con p {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #999999;
+}
+.s-right .recommend .con p a {
+    color: #999999;
+}
+.s-right .recommend .con p img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.s-right .recommend .con p i {
+    margin-left: 20px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #999999;
+    margin-bottom: 2px;
+}
+.s-right .like h4 img{
+    margin-top: 15px;
+    margin-right: 5px;
+}
+.s-right .like .con p i {
+    margin-left: 0px;
+}
