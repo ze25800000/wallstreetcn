@@ -110,6 +110,7 @@ header {
 .hover-con .head-title .on {
     color: #1482f0;
     position: relative;
+    transition: all 0.3s;
 }
 .hover-con .head-title .on::before {
     content: '';
@@ -119,6 +120,7 @@ header {
     bottom: 0;
     left: 0;
     border-bottom:1px solid #1482f0;
+    transition: all 0.3s;
 }
 .hover-con .head-title .on::after {
     content: "";
@@ -130,6 +132,7 @@ header {
     border: 1px solid #1478f0;
     background: #fff;
     transform: rotate(45deg) translate(-7px,2px);
+    transition: all 0.3s;
 }
 .hover-con {
     position: absolute;
