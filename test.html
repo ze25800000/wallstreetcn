@@ -6,36 +6,72 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+        .box {
+            width: 380px;
+            height: 240px;
+            background-color: #cecece;
+            margin: 100px auto;
+        }
+        .table {
+            box-sizing: border-box;
+            padding: 0 37px;
+            height: 41px;
+        }
+        .nav-box {
+            width: 100%;
+            display: table;
+            position: relative;
+        }
+        .cell {
+            display: table-cell;
+            background-color: #665d16;
+            height: 41px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .move {
+            position: absolute;;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            transform: translate(0%);
+        }
+        .move::before {
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: #1478f1;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
 </head>
-<style>
-    div {
-        width: 200px;
-        height: 200px;
-        background-color: #1478f1;
-        opacity: 0;
-        float: left;
-        margin-right: 20px;
-    }
-</style>
 <body>
-<div class="d1"></div>
-<div class="d2"></div>
-<div class="d3"></div>
-<div class="d4"></div>
-<div class="d5"></div>
-</body>
+<div class="box">
+    <div class="table">
+        <div class="nav-box">
+            <div class="cell">全球</div>
+            <div class="cell">全球</div>
+            <div class="cell">全球</div>
+            <div class="move"></div>
+        </div>
+    </div>
+</div>
 <script src="js/jquery-1.7.2.min.js"></script>
 <script>
-    $('.d1').animate({opacity:1},500,function () {
-        $('.d2').animate({opacity:1},500,function () {
-            $('.d3').animate({opacity:1},500,function () {
-                $('.d4').animate({opacity:1},500,function () {
-                    $('.d5').animate({opacity:1},500,function () {
 
-                    })
-                })
-            })
-        })
+    $('.cell').click(function () {
+        var num = $(this).index();
+        $('.move').animate({left:$(this).width()*num});
+//        $('.move').css({transform: 'translate(' + num * 100 + '%)'});
     })
 </script>
+</body>
 </html>
