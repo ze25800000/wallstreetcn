@@ -7,7 +7,6 @@ function change(element) {
         var num = $(this).index();
         $(this).addClass('on').siblings().removeClass('on');
         bluebar.animate({left:$(this).width()*num});
-        console.log(bluebar.offset().left)
         hContent.eq($(this).index()).addClass('changetab').siblings().removeClass('changetab');
    })
 }
@@ -32,18 +31,21 @@ change('business');
 })();
 /***********sign in/on**************model*****************/
 var model = $('.model');
-var modelcantainer = $('model-container');
+var modelcantainer = $('.model-container');
 $('.signin').click(function () {
     model.css({display: 'block'}).animate({opacity: 1},300);
+    modelcantainer.animate({opacity: 1},300);
 });
 $('.signup').click(function () {
-    model.animate({});
-
+    model.css({display: 'block'}).animate({opacity: 1},300);
+    modelcantainer.animate({opacity: 1},300);
 });
 model.click(function () {
     $(this).css({display:'none',opacity: 0})
 });
-
+modelcantainer.click(function (e) {
+    e.stopPropagation();
+});
 
 /******************artical*********************/
 $('.content .left .title h2').click(function () {
@@ -87,7 +89,7 @@ verticalscroll('.right .scroll-box-list',3500);
         var newest = indexdata.newest[i];
         html += '<li><a href="#"><div class="img"><img src="' + newest.titlepic + '" /></div><div><h3>' + newest.title + '</h3><p>' + newest.content + '</p></div></a><div class="author"><a href="#"><img src="' + newest.editorpic + '"/><span>' + newest.editor + '</span></a><em class="iconfont icon-shijian"> ' + newest.time + '</em></div></li>';
     }
-    $('.newest').html(html);
+    $('.newest').html(html+'<a class="more" href="#">查看更多&gt;</a>');
 })();
     function sort(container) {
         var html = '';
@@ -123,3 +125,7 @@ verticalscroll('.right .scroll-box-list',3500);
     }
     $('.banner ul').html(html);
 })();
+/**********************backtotop***********************/
+$('.sidebar li:last').click(function () {
+    $('html,body').animate({scrollTop: 0}, 500);
+});
