@@ -18,9 +18,9 @@ change('business');
 (function () {
     var input = $('.header-right input');
     $('.search').toggle(function () {
-        input.animate({width: 280, left: -260});
+        input.animate({width: 280, left: -260},'200');
     },function () {
-        input.animate({width: 0, left: 0});
+        input.animate({width: 0, left: 0},'200');
     });
     input.focus(function () {
         $(this).css({borderBottom:'1px solid #959798'})
@@ -30,7 +30,7 @@ change('business');
     });
 })();
 /***********sign in/on**************model*****************/
-var model = $('.model');
+/*var model = $('.model');
 var modelcantainer = $('.model-container');
 $('.signin').click(function () {
     model.css({display: 'block'}).animate({opacity: 1},300);
@@ -45,7 +45,7 @@ model.click(function () {
 });
 modelcantainer.click(function (e) {
     e.stopPropagation();
-});
+});*/
 
 /******************artical*********************/
 $('.content .left .title h2').click(function () {

@@ -705,6 +705,7 @@ header {
     background-color: #fafafa;
     color: #333;
     float: left;
+    text-indent: -1px;
 }
 .banner .notice .scroll-box {
     width: 635px;
@@ -713,6 +714,17 @@ header {
     display: block;
     float: left;
 }
+.banner .notice .scroll-box-list {
+    width: 100%;
+}
+.banner .notice .scroll-box p {
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 100%;
+    height: 45px;
+}
+
 .banner .notice .right .scroll-box {
     width: 290px;
 }
@@ -1258,14 +1270,14 @@ footer .f-container ul li a:hover {
 }
 /*****************************model********************/
 .model {
-    opacity: 0;
+    opacity: 1;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.5);
-    display: none;
+    display: block;
     z-index: 9;
 }
 .model .model-container {
@@ -1274,9 +1286,88 @@ footer .f-container ul li a:hover {
     left: 50%;
     transform: translate(-50%,-50%);
     width: 370px;
-    height: 426px;
+    /*height: 426px;*/
     background-color: #ffffff;
     border-radius: 7px;
     z-index: 12;
-    opacity: 0;
+    opacity: 1;
+    font-size: 14px;
+    color: #999;
+}
+.model .model-head {
+    position: relative;
+    text-align: center;
+    color: #333333;
+    font:20px/70px '微软雅黑';
+    border-bottom: 1px solid #DCDCDC;
+}
+.model .model-head span {
+    font-size: 26px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: -19px;
+    color: #DCDCDC;
+    cursor: pointer;
+}
+.model .model-head span:hover {
+    color: #999999;
+}
+.model .custom-model-body {
+    padding: 11px 30px 20px;
+}
+.custom-model-body .account,.custom-model-body .password{
+    margin-top: 42px;
+    margin-bottom: 8px;
+    position: relative;
+    color: #999;
+}
+.model .custom-model-body input {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #DCDCDC;
+    width: 310px;
+    outline:none;
+    font:14px/35px '微软雅黑';
+    color: #333333;
+}
+.account label,.password label{
+    position: absolute;
+    top: 8px;
+}
+.model .custom-model-body .remenber input {
+    float: left;
+    width: 15px;
+    height: 15px;
+}
+.custom-model-body .remenber{
+    position: relative;
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 26px;
+    margin-bottom: 20px;
+}
+.pullleft,.remenber input {
+    float: left;
+}
+.pullright {
+    float: right;
+}
+.pullright a {
+    color: #6db6fc;
+}
+.custom-model-body button {
+    border:none;
+    font: 14px/40px '微软雅黑';
+    text-align: center;
+    background-color: #1478f0;
+    border-radius: 5px;
+    width: 100%;
+    color: #ffffff;
+}
+.custom-model-body span {
+    position: absolute;
+    top: 38px;
+    font-size: 12px;
+    color: #f6704d;
 }
