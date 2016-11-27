@@ -7,40 +7,95 @@ $(document).ready(function(){
     })
 });
 /***********************scroll******************/
-$('header li a').click(function () {
+var floor = $('body>div');
+var nav=$('header li a')
+nav.click(function () {
     $(this).addClass('on').parent().siblings().children().removeClass('on');
-    var tops=$('body>div').eq($(this).parent().index()).offset().top;
+    var tops=floor.eq($(this).parent().index()).offset().top;
     $('html,body').animate({ scrollTop: tops-100}, 500);
 });
-/************************逐个显示*****************/
-$(document).scroll(function () {
-    var addtop = $(window).scrollTop() + $(window).height();
-    function scrolls(classname) {
-        var divtop = $('.'+classname+'').offset().top;
-        if (addtop > divtop) {
-            console.log(1);
-            $('.'+classname+' h2,.'+classname+' h1,.'+classname+' p,.'+classname+' a').animate({opacity: 1}, 500, function () {
-                $('.'+classname+' ul,.'+classname+'>div,.'+classname+' a img').animate({opacity: 1}, 500, function () {
-                    $('.'+classname+' li:eq(0),.'+classname+'>div>div,,.'+classname+' a p').animate({opacity: 1}, 500, function () {
-                        $('.'+classname+' li:eq(1),.'+classname+'>div>div p').animate({opacity: 1}, 500, function () {
-                            $('.'+classname+' li:eq(2),.'+classname+'>div>div a').animate({opacity: 1}, 500, function () {
-                                $('.'+classname+' li:eq(3)').animate({opacity: 1}, 500,function () {
-                                    $('.'+classname+' li:eq(4)').animate({opacity: 1}, 500,function () {
-
-                                    });
-                                });
-                            });
-                        });
-                    });
-               });
-            });
+$(window).scroll(function () {
+    var sTop = $(this).scrollTop();
+    floor.each(function () {
+        if (sTop > $(this).offset().top) {
+            nav.eq($(this).index()).addClass('on').parent().siblings().children().removeClass('on');
         }
+        if ((sTop+500)>$(this).offset().top) {
+            fn($(this))
+        }
+    });
+    if (sTop==0) {
+        nav.eq(0).addClass('on').parent().siblings().children().removeClass('on');
     }
-
-    scrolls('whoweare');
-    scrolls('ourvision');
-    scrolls('ourteam');
-    scrolls('workingwithus');
 });
+function fn(data) {
+    data.children('section').animate({opacity:1},500,function () {
+        //whoweare 4个图标
+        $(this).parent().children().next().children('li:eq(0)').animate({opacity: 1}, 300, function () {
+            $(this).next().animate({opacity: 1}, 300, function () {
+                $(this).next().animate({opacity: 1}, 300, function () {
+                    $(this).next().animate({opacity: 1}, 300)
+                })
+            })
+        });
+        //轮播图
+        $(this).parent().children('.cover').animate({opacity: 1}, 300);
 
+        //people 左右插入
+        $(this).parent().find('.left .frame:eq(0)').animate({left: 0}, 400, function () {
+            $(this).parent().next('li').children('.frame').animate({left: 0}, 400);
+        });
+        $(this).parent().find('.right .frame:eq(0)').animate({left: 0}, 500, function () {
+            $(this).parent().next('li').children('.frame').animate({left: 0}, 400);
+        });
 
+        //workingwithus
+        $(this).parent().find('.lc1,.rc1').animate({opacity:1},400,function () {
+            $(this).parent().find('.lc2,.rc2').animate({opacity:1},450,function () {
+                $(this).parent().find('.lc3,.rc3').animate({opacity:1},500,function () {
+                    $(this).parent().find('.lc4,.rc4').animate({opacity:1},550,function () {
+                        $(this).parent().find('.lc5,.rc5').animate({opacity:1},600,function () {
+                            $(this).parent().find('.lc6,.rc6').animate({opacity: 1}, 600);
+                        })
+                    })
+                })
+            })
+        })
+    })
+}
+/******************轮播图*****************/
+var right = $('.arrow-right');
+var left = $('.arrow-left');
+var index = 0;
+var ul = $('.cover ul');
+function slide(num) {
+    ul.animate({marginLeft:-num*100+'%'})
+}
+right.click(function () {
+
+    play();
+});
+left.click(function () {
+    index--;
+    if (index<0) {
+        ul.css({marginLeft:-(ul.children('li').length-1)*100+'%'})
+        index = ul.children('li').length-1;
+    }
+    index = index == 5 ? 4 : index;
+    slide(index);
+});
+function play() {
+    index++;
+    if (index>=ul.children('li').length) {
+        ul.css({marginLeft: 0});
+        index = 1;
+    }
+    slide(index);
+}
+
+var sid=setInterval(play, 2000);
+$('.cover').hover(function () {
+    clearInterval(sid);
+}, function () {
+    sid=setInterval(play, 2000);
+});

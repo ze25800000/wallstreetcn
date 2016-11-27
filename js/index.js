@@ -46,6 +46,9 @@ model.click(function () {
 modelcantainer.click(function (e) {
     e.stopPropagation();
 });*/
+/**********************stockIndex************************/
+
+
 
 /******************artical*********************/
 $('.content .left .title h2').click(function () {
