@@ -793,29 +793,28 @@
 
 
 </div>
-<div class="model">
-    <div class="model-container">
-        <div class="model-head">
+<div class="modal">
+    <div style="display: block" id="login" class="modal-container">
+        <div class="modal-head">
             <span class="close">&times;</span>
             登录
         </div>
-        <div class="custom-model-body">
+        <div class="custom-modal-body">
             <form action="">
                 <div class="account">
-                    <input type="text">
+                    <input id="ac" type="text" data-parsley-required-message="请输入用户名、手机或邮箱">
                     <span></span>
-                    <label>用户名、手机或邮箱</label>
+                    <label for="ac">用户名、手机或邮箱</label>
                 </div>
                 <div class="password">
-                    <input type="text">
-                    <span>11</span>
-                    <label>密码</label>
+                    <input id="pas" type="text" data-parsley-required-message="请输入密码">
+                    <span></span>
+                    <label for="pas">密码</label>
                 </div>
-                <div class="remenber">
+                <div class="remenber clearfix">
                     <div class="pullleft">
                         <label for="rem">
                             <input id="rem" type="checkbox">记住我
-                            <span>12311123</span>
                         </label>
                     </div>
                     <div class="pullright">
@@ -832,7 +831,97 @@
             <a href=""><i class="iconfont icon-weixin"></i></a>
             <a href=""><i class="iconfont icon-QQ"></i></a>
         </div>
-        <div class="redirect-row">还没有见闻账号？<a class="">立即注册</a></div>
+        <div class="redirect-row">还没有见闻账号？<a href="javascript:;" class="">signup</a></div>
+    </div>
+    <div style="display: none" id="phonesignup" class="modal-container">
+        <div class="modal-head">
+            <span class="close">&times;</span>
+            注册
+        </div>
+        <div class="custom-modal-body">
+            <form action="">
+                <div class="account">
+                    <input id="ac" type="text" data-parsley-required-message="请输入一个手机号">
+                    <span></span>
+                    <label for="ac">手机号<b>或<a href="#">邮箱注册</a></b></label>
+                </div>
+                <div class="password">
+                    <input id="pas" type="password" data-parsley-required-message="请输入密码">
+                    <span></span>
+                    <label for="pas">密码（不少于6位）</label>
+                </div>
+                <div class="text">
+                    <input id="yan" type="text" data-parsley-required-message="请输入验证码">
+                    <span></span>
+                    <label for="yan">6位验证码<b><a href="#">获取验证码</a></b></label>
+                </div>
+                <div class="remenber">
+                    <div class="pullleft">
+                        <label for="rem">
+                            <input id="rem" type="checkbox" checked="checked">同意 <a href="#">使用条款</a>
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="pullright">
+                        <label>
+                            <a href="#">忘记密码?</a>
+                        </label>
+                    </div>
+                </div>
+                <button>注册</button>
+            </form>
+        </div>
+        <div class="custom-row">
+            <a href=""><i class="iconfont icon-unie61d"></i></a>
+            <a href=""><i class="iconfont icon-weixin"></i></a>
+            <a href=""><i class="iconfont icon-QQ"></i></a>
+        </div>
+        <div class="redirect-row">已有见闻账号?<a href="javascript:;" class="signin">立即登录</a></div>
+    </div>
+    <div style="display: none" id="emailsignup" class="modal-container">
+        <div class="modal-head">
+            <span class="close">&times;</span>
+            注册
+        </div>
+        <div class="custom-modal-body">
+            <form action="">
+                <div class="account">
+                    <input id="ac" type="text" data-parsley-required-message="请输入一个手机号">
+                    <span></span>
+                    <label for="ac">手机号<b>或<a href="#">邮箱注册</a></b></label>
+                </div>
+                <div class="password">
+                    <input id="pas" type="password" data-parsley-required-message="请输入密码">
+                    <span></span>
+                    <label for="pas">密码（不少于6位）</label>
+                </div>
+                <div class="text">
+                    <input id="yan" type="text" data-parsley-required-message="请输入验证码">
+                    <span></span>
+                    <label for="yan">6位验证码<b><a href="#">获取验证码</a></b></label>
+                </div>
+                <div class="remenber">
+                    <div class="pullleft">
+                        <label for="rem">
+                            <input id="rem" type="checkbox" checked="checked">同意 <a href="#">使用条款</a>
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="pullright">
+                        <label>
+                            <a href="#">忘记密码?</a>
+                        </label>
+                    </div>
+                </div>
+                <button>注册</button>
+            </form>
+        </div>
+        <div class="custom-row">
+            <a href=""><i class="iconfont icon-unie61d"></i></a>
+            <a href=""><i class="iconfont icon-weixin"></i></a>
+            <a href=""><i class="iconfont icon-QQ"></i></a>
+        </div>
+        <div class="redirect-row">已有见闻账号?<a href="javascript:;" class="signin">立即登录</a></div>
     </div>
 </div>
 </body>

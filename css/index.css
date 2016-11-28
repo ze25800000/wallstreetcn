@@ -1268,8 +1268,8 @@ footer .f-container ul li a:hover {
 .sidebar ul li:nth-child(4):hover .weixin {
     display: block;
 }
-/*****************************model********************/
-.model {
+/*****************************modal********************/
+.modal {
     opacity: 1;
     position: fixed;
     left: 0;
@@ -1277,10 +1277,11 @@ footer .f-container ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.5);
-    display: none;
+    display: block;
     z-index: 9;
 }
-.model .model-container {
+.modal .modal-container {
+    opacity: 1;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1290,18 +1291,17 @@ footer .f-container ul li a:hover {
     background-color: #ffffff;
     border-radius: 7px;
     z-index: 12;
-    opacity: 1;
     font-size: 14px;
     color: #999;
 }
-.model .model-head {
+.modal .modal-head {
     position: relative;
     text-align: center;
     color: #333333;
     font:20px/70px '微软雅黑';
     border-bottom: 1px solid #DCDCDC;
 }
-.model .model-head span {
+.modal .modal-head span {
     font-size: 26px;
     font-weight: bold;
     position: absolute;
@@ -1310,19 +1310,19 @@ footer .f-container ul li a:hover {
     color: #DCDCDC;
     cursor: pointer;
 }
-.model .model-head span:hover {
+.modal .modal-head span:hover {
     color: #999999;
 }
-.model .custom-model-body {
+.modal .custom-modal-body {
     padding: 11px 30px 20px;
 }
-.custom-model-body .account,.custom-model-body .password{
+.custom-modal-body .account,.custom-modal-body .password{
     margin-top: 42px;
     margin-bottom: 8px;
     position: relative;
     color: #999;
 }
-.model .custom-model-body input {
+.modal .custom-modal-body input {
     display: block;
     border: none;
     border-bottom: 1px solid #DCDCDC;
@@ -1331,24 +1331,25 @@ footer .f-container ul li a:hover {
     font:14px/35px '微软雅黑';
     color: #333333;
 }
-.account label,.password label{
-    position: absolute;
-    top: 8px;
+.custom-modal-body form label{
+    font-size: 12px;
 }
-.model .custom-model-body .remenber input {
+
+.custom-modal-body .remenber{
+    position: relative;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.modal .custom-modal-body .remenber input {
     float: left;
     width: 15px;
     height: 15px;
 }
-.custom-model-body .remenber{
-    position: relative;
-    overflow: hidden;
-    font-size: 12px;
-    margin-top: 26px;
-    margin-bottom: 20px;
-}
 .pullleft,.remenber input {
     float: left;
+}
+.pullleft {
+    margin-left: -4px;
 }
 .pullright {
     float: right;
@@ -1356,7 +1357,7 @@ footer .f-container ul li a:hover {
 .pullright a {
     color: #6db6fc;
 }
-.custom-model-body button {
+.custom-modal-body button {
     border:none;
     font: 14px/40px '微软雅黑';
     text-align: center;
@@ -1365,9 +1366,42 @@ footer .f-container ul li a:hover {
     width: 100%;
     color: #ffffff;
 }
-.custom-model-body span {
+.custom-modal-body span {
     position: absolute;
     top: 38px;
     font-size: 12px;
     color: #f6704d;
+}
+.modal-container .custom-row {
+    text-align: center;
+    position: relative;
+}
+.modal-container .custom-row::before {
+    content: '|';
+    position: absolute;
+    top: 2px;
+    left: 166px;
+}
+.modal-container .custom-row::after {
+    content: '|';
+    position: absolute;
+    top: 2px;
+    left: 200px;
+}
+.modal-container .custom-row a i{
+    color: #999999;
+    margin: 0 5px;
+    font-size: 20px;
+}
+.modal-container .redirect-row {
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+}
+.modal-container .redirect-row a{
+    color: #6db6fc;
+    font-size: 12px;
+}
+.modal .on {
+    display: block;
 }

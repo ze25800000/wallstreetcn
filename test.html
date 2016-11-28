@@ -6,72 +6,151 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-
-        }
-        .box {
-            width: 380px;
-            height: 240px;
-            background-color: #cecece;
-            margin: 100px auto;
-        }
-        .table {
-            box-sizing: border-box;
-            padding: 0 37px;
-            height: 41px;
-        }
-        .nav-box {
-            width: 100%;
-            display: table;
-            position: relative;
-        }
-        .cell {
-            display: table-cell;
-            background-color: #665d16;
-            height: 41px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .move {
-            position: absolute;;
-            height: 100%;
-            left: 0;
-            bottom: 0;
-            transform: translate(0%);
-        }
-        .move::before {
-            content: '';
-            height: 2px;
-            width: 100%;
-            background-color: #1478f1;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-    </style>
 </head>
 <body>
-<div class="box">
-    <div class="table">
-        <div class="nav-box">
-            <div class="cell">全球</div>
-            <div class="cell">全球</div>
-            <div class="cell">全球</div>
-            <div class="move"></div>
+<div class="custom-modal-content" id="user-modal-login">
+    <div class="custom-modal-header ">
+        <button type="button" class="close" data-action="hide-custom-modal" data-target="#user-modal"><span
+                aria-hidden="true">×</span></button>
+        登录
+    </div>
+    <div class="custom-modal-body">
+        <form data-validate="" action="https://passport.wallstreetcn.com//login?ajax=1" method="POST" novalidate="">
+            <div class="form-group has-feedback has-error"><input type="text" name="identify" class="form-control"
+                                                                  required="" data-parsley-trigger="blur change"
+                                                                  data-parsley-pattern="(^1[3|4|5|7|8]\d{9}$)|(^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+.[a-zA-Z]{2,3}$)|(^[0-9a-zA-Z_]{1,}$)"
+                                                                  data-parsley-minlength="4"
+                                                                  data-parsley-minlength-message="用户名最短4个字符"
+                                                                  data-parsley-pattern-message="用户名含中文、符号的用户请用手机或邮箱登录"
+                                                                  data-parsley-required-message="请输入用户名、手机或邮箱"
+                                                                  data-parsley-id="2863"><span class="help-block filled"
+                                                                                               style="margin-bottom: 0;"
+                                                                                               id="parsley-id-2863"><span
+                    class="parsley-pattern">用户名含中文、符号的用户请用手机或邮箱登录</span></span><label class="form-label left form-sm">用户名、手机或邮箱</label>
+                <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+            </div>
+            <div class="form-group has-feedback has-error"><input type="password" name="password"
+                                                                  class="form-control password-previewer" required=""
+                                                                  data-parsley-trigger="blur change"
+                                                                  data-parsley-minlength="6"
+                                                                  data-parsley-minlength-message="密码最短6位" maxlength="26"
+                                                                  data-parsley-maxlength="26"
+                                                                  data-parsley-max-length="密码最长26位"
+                                                                  data-parsley-required-message="请输入密码"
+                                                                  data-parsley-id="1056"><span class="help-block filled"
+                                                                                               style="margin-bottom: 0;"
+                                                                                               id="parsley-id-1056"><span
+                    class="parsley-required">请输入密码</span></span><label class="form-label left">密码</label></div>
+            <div class="form-footer">
+                <div class="checkbox pull-left" style="width: 100px;"><label class="remember-label"><input
+                        type="checkbox" name="remember" value="1" data-parsley-multiple="remember"
+                        data-parsley-id="8628"> 记住我</label><span class="help-block" style="margin-bottom: 0;"
+                                                                 id="parsley-id-multiple-remember"></span></div>
+                <div class="pull-right"><label class="remember-label"><a class="link-left link"
+                                                                         data-target="reset">忘记密码</a></label></div>
+            </div>
+            <button type="submit" style="margin-top: 0" data-init="登录" data-ing="登录中..." class="custom-button"></button>
+        </form>
+        <div class="custom-row"><a class="type-weibo login-social-btn"
+                                   href="http://wallstreetcn.com/auth/request/weibo/oauth2?next=http://wallstreetcn.com/"><i
+                class="icon wallstreetcn_web weibo"></i></a><a class="type-wechat login-social-btn"
+                                                                href="http://wallstreetcn.com/auth/request/weixin/oauth2?next=http://wallstreetcn.com/"
+                                                                target="_self"><i
+                class="icon wallstreetcn_web wechat"></i></a><a class="type-qq login-social-btn"
+                                                                 href="http://wallstreetcn.com/auth/request/tencent/oauth2?next=http://wallstreetcn.com/"
+                                                                 target="_self"><i
+                class="icon wallstreetcn_web qq"></i></a></div>
+        <div class="redirect-row">还没有见闻账号？<a class="link-right link" data-target="register">立即注册</a></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div id="modal-container" class="active">
+    <div class="custom-modal-content" id="user-modal-register">
+        <div class="custom-modal-header">
+            <button type="button" class="close" data-action="hide-custom-modal" data-target="#user-modal"><span
+                    aria-hidden="true">×</span></button>
+            注册
+        </div>
+        <div class="custom-modal-body">
+            <form data-validate="" action="https://passport.wallstreetcn.com//register?ajax=1" method="POST"
+                  autocomplete="off" novalidate="" role="form">
+                <div class="form-group has-feedback has-error"><input type="password" hidden=""
+                                                                      data-parsley-id="1110"><span class="help-block"
+                                                                                                   style="margin-bottom: 0;"
+                                                                                                   id="parsley-id-1110"></span><input
+                        type="phone" name="mobile" class="form-control" required="" data-parsley-trigger="blur change"
+                        data-parsley-remote="https://api.wallstreetcn.com/v2/register/check"
+                        data-parsley-remote-options="{ method: " get",="" datatype:=""
+                    "json"}"data-parsley-remote-message="输入的手机号已被占用" data-parsley-required-message="请输入一个手机号"
+                    data-parsley-pattern="^1[3|4|5|7|8]\d{9}$" data-parsley-pattern-message="请输入正确格式的11位手机号"
+                    data-parsley-id="3134"><span class="help-block filled" style="margin-bottom: 0;"
+                                                 id="parsley-id-3134"><span
+                            class="parsley-required">请输入一个手机号</span></span>
+                    <label
+                            class="form-label left">手机号</label><label class="form-label right">或<a
+                            class="link-left link reg-type" data-target="registerByEM">邮箱注册</a></label></div>
+                <div class="form-group has-feedback has-error"><input type="password" name="password"
+                                                                      class="form-control password-previewer"
+                                                                      required="" autocomplete="new-password"
+                                                                      data-parsley-trigger="blur change"
+                                                                      data-parsley-minlength="6"
+                                                                      data-parsley-minlength-message="密码最短6位"
+                                                                      maxlength="26" data-parsley-maxlength="26"
+                                                                      data-parsley-max-length="密码最长26位"
+                                                                      data-parsley-required-message="请输入密码"
+                                                                      data-parsley-pattern="^[^\s]*$"
+                                                                      data-parsley-pattern-message="密码中不允许出现空格符号"
+                                                                      data-parsley-id="9622"><span
+                        class="help-block filled" style="margin-bottom: 0;" id="parsley-id-9622"><span
+                        class="parsley-required">请输入密码</span></span><label class="form-label left">密码（不少于6位）</label>
+                </div>
+                <div class="form-group has-feedback"><input type="text" name="mobilecaptcha" class="form-control"
+                                                            required="" data-parsley-trigger="blur change"
+                                                            data-parsley-type="number"
+                                                            data-parsley-required-message="请输入验证码"
+                                                            data-parsley-id="5432"><span class="help-block"
+                                                                                         style="margin-bottom: 0;"
+                                                                                         id="parsley-id-5432"></span><label
+                        class="form-label left0">6位验证码</label><label class="form-label right"><a class="send-captcha"
+                                                                                                 data-auth-sendcaptchadata-checkurl="https://api.wallstreetcn.com/v2/register/mobile/check"
+                                                                                                 data-sendurl="https://api.wallstreetcn.com/v2/register/mobile/captcha">获取验证码</a><a
+                        style="display:none" class="count-down" data-auth-countdown="">重新获取
+                    <spandata-auth-seconds class="seconds">60s</spandata-auth-seconds>
+                </a></label></div>
+                <div class="form-footer">
+                    <div class="checkbox pull-left" style="width: 150px;"><label class="remember-label"><input
+                            type="checkbox" checked="checked" value="yes" required=""
+                            data-parsley-required-message="请勾选使用条款"> 同意<a href="http://wallstreetcn.com/pages/terms"
+                                                                          class="text-blue" target="_blank"
+                                                                          style="color:#6DB6FC">使用条款</a></label></div>
+                    <button type="submit" style="margin-top: 10px" data-init="注册" data-ing="注册中..."
+                            class="custom-button"></button>
+                </div>
+                <div class="custom-row"><a class="type-weibo login-social-btn"
+                                           href="http://wallstreetcn.com/auth/request/weibo/oauth2?next=http://wallstreetcn.com/"
+                                           target="_self"><i class="icon wallstreetcn_web weibo"></i></a><a
+                        class="type-wechat login-social-btn"
+                        href="http://wallstreetcn.com/auth/request/weixin/oauth2?next=http://wallstreetcn.com/"
+                        target="_self"><i class="icon wallstreetcn_web wechat"></i></a><a
+                        class="type-qq login-social-btn"
+                        href="http://wallstreetcn.com/auth/request/tencent/oauth2?next=http://wallstreetcn.com/"
+                        target="_self"><i class="icon wallstreetcn_web qq"></i></a>
+                    <div class="redirect-row">已有见闻账号?<a class="link-left link" data-target="login" data-slide-to="1">
+                        立即登录</a></div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<script src="js/jquery-1.7.2.min.js"></script>
-<script>
 
-    $('.cell').click(function () {
-        var num = $(this).index();
-        $('.move').animate({left:$(this).width()*num});
-//        $('.move').css({transform: 'translate(' + num * 100 + '%)'});
-    })
-</script>
+
 </body>
 </html>
+
+

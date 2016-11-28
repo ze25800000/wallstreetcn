@@ -2941,12 +2941,12 @@ jQuery.event = {
 					jQuery.event.dispatch.apply( eventHandle.elem, arguments ) :
 					undefined;
 			};
-			// Add elem as a property of the handle fn to prevent a memory leak with IE non-native events
+			// Add elem as a property of the handle appear to prevent a memory leak with IE non-native events
 			eventHandle.elem = elem;
 		}
 
 		// Handle multiple events separated by a space
-		// jQuery(...).bind("mouseover mouseout", fn);
+		// jQuery(...).bind("mouseover mouseout", appear);
 		types = jQuery.trim( hoverHack(types) ).split( " " );
 		for ( t = 0; t < types.length; t++ ) {
 
@@ -3771,16 +3771,16 @@ jQuery.fn.extend({
 		}
 
 		if ( data == null && fn == null ) {
-			// ( types, fn )
+			// ( types, appear )
 			fn = selector;
 			data = selector = undefined;
 		} else if ( fn == null ) {
 			if ( typeof selector === "string" ) {
-				// ( types, selector, fn )
+				// ( types, selector, appear )
 				fn = data;
 				data = undefined;
 			} else {
-				// ( types, data, fn )
+				// ( types, data, appear )
 				fn = data;
 				data = selector;
 				selector = undefined;
@@ -3828,7 +3828,7 @@ jQuery.fn.extend({
 			return this;
 		}
 		if ( selector === false || typeof selector === "function" ) {
-			// ( types [, fn] )
+			// ( types [, appear] )
 			fn = selector;
 			selector = undefined;
 		}
@@ -3860,7 +3860,7 @@ jQuery.fn.extend({
 		return this.on( types, selector, data, fn );
 	},
 	undelegate: function( selector, types, fn ) {
-		// ( namespace ) or ( selector, types [, fn] )
+		// ( namespace ) or ( selector, types [, appear] )
 		return arguments.length == 1? this.off( selector, "**" ) : this.off( types, selector, fn );
 	},
 
