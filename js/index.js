@@ -4,15 +4,9 @@ var wallstreetcnIndex = {
     signup:$('.signup'),
     modal:$('.modal'),
     init:function () {
-        this.navChange('information');
-        this.navChange('actual');
-        this.navChange('market');
-        this.navChange('business');
+        this.navChange();
         this.search();
-        this.Modal();
-        this.Login();
-        this.SingUp();
-        this.findPassword();
+        this.formOperate();
         this.contentNav();
         this.actualTime();
         this.Carrousel('.left .scroll-box-list', 2000);
@@ -25,15 +19,13 @@ var wallstreetcnIndex = {
         this.appendMiddlePart();
         this.appendAuthorPart();
     },
-    navChange:function (element) {
-        var Lis = $('.'+element+' .head-title li');
-        var hContent = $('.' + element + ' .h-content');
-        var bluebar = $('.' + element + ' .bluebar');
+    navChange:function () {
+        var Lis = $('.tabs-nav-container .head-title li');
         Lis.click(function () {
             var num = $(this).index();
-            $(this).addClass('on').siblings().removeClass('on');
-            bluebar.animate({left:$(this).width()*num});
-            hContent.eq($(this).index()).addClass('changetab').siblings().removeClass('changetab');
+            $(this).parent().children('li').addClass('on').siblings().removeClass('on');
+            $(this).parent().children('.bluebar').animate({left:$(this).width()*num});
+            $(this).parent().parent().parent().children('.h-content').eq($(this).index()).addClass('changetab').siblings().removeClass('changetab');
         })
     },
     search:function () {
@@ -50,56 +42,201 @@ var wallstreetcnIndex = {
             $(this).css({borderBottom:'1px solid #666'})
         });
     },
-    Modal:function () {
+    formOperate:function () {
         var self = this;
         var modalContainer = $('.modal-container');
+        var input = $('.custom-modal-body form input');
+        var span = $('.custom-modal-body form span');
+        var signinbox = $('#signinbox');
+        var phonesignupbox = $('#phonesignupbox');
+        var emailsignupbox = $('#emailsignupbox');
+        var findpasswordbyphone = $('#findpasswordbyphone');
+        var findpasswordbyemail = $('#findpasswordbyemail');
+        var phoneReg =eval('/'+phonesignupbox.find('.account input').attr('data-parsley-pattern')+'/');
+        var emailReg = eval('/' + emailsignupbox.find('.account input').attr('data-parsley-pattern') + '/');
+        var flag1 = 0;
+        var flag2 = 0;
+        var flag3 = 0;
+        function Clear() {
+            setTimeout(function () {
+                $('label').css({fontSize: 12, top: -13});
+            }, 100);
+            input.css({borderBottom: '1px solid #DCDCDC'});
+            span.html('');
+            input.val('');
+            flag1 = 0;
+            flag2 = 0;
+            flag3 = 0;
+        }
+
         this.signin.click(function () {
-            console.log($(this).parent().parent())
+            signinbox.addClass('on').siblings().removeClass('on');
             self.modal.show().animate({opacity: 1});
             self.modal.children().animate({opacity: 1});
+            Clear();
         });
         this.signup.click(function () {
+            phonesignupbox.addClass('on').siblings().removeClass('on');
             self.modal.show().animate({opacity: 1});
             self.modal.children().animate({opacity: 1});
+            Clear();
+        });
+        $('.emailsignup').click(function () {
+            emailsignupbox.addClass('on').siblings().removeClass('on');
+            Clear();
+        });
+        $('.forgetpassword').click(function () {
+            findpasswordbyphone.addClass('on').siblings().removeClass('on');
+            Clear();
+        });
+        $('.findpasswordbyemail').click(function () {
+            findpasswordbyemail.addClass('on').siblings().removeClass('on');
+            Clear();
         });
         modalContainer.click(function (e) {
             e.stopPropagation();
         });
         $('.close').click(function () {
+            Clear();
             self.modal.hide();
         });
         this.modal.click(function () {
-            $(this).hide();
+            Clear();
+            self.modal.hide();
         });
         $(window).keyup(function (e) {
-            if (e.keyCode==27) {
+            if (e.keyCode == 27) {
+                Clear();
                 self.modal.hide();
             }
-        })
-    },
-    Login:function () {
-        var input = $('.custom-modal-body form input');
-        var x = 0;
+        });
+
         input.focus(function () {
-            $(this).parent().children('label').animate({fontSize: 12, top: -16},200);
+            $(this).parent().children('label').animate({fontSize: 12, top: -13},200);
             if($(this).css('borderBottomColor')=='rgb(220, 220, 220)'){
                 $(this).css({borderBottom: '1px solid #1478f0'});
             }
         });
-        input.blur(function () {
+        /*input.blur(function () {
             var val = $(this).val();
-            $(this).css({borderBottom:'1px solid #f6704d'});
             if (!val) {
-                $(this).parent().children('label').animate({fontSize: 14, top: 8},200);
+                $(this).css({borderBottom: '1px solid #f6704d'});
+                $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
+                $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
             }
-            $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
-        })
-    },
-    SingUp:function () {
+        });*/
+        //账户
+        var accountInput = $('.account input');
+        accountInput.blur(function () {
+            flag1++;
+            var val = $(this).val();
+            //电话注册
+            if (!phoneReg.test(val)&&$(this).parents('#phonesignupbox')[0]==phonesignupbox[0]) {
+                phonesignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
+                $(this).css({borderBottom: '1px solid #f6704d'});
+            }else {
+                phonesignupbox.find('.account span').html('');
+                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+            }
+            //邮箱注册
+            if (!emailReg.test(val)&&$(this).parents('#emailsignupbox')[0]==emailsignupbox[0]) {
+                emailsignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
+                $(this).css({borderBottom: '1px solid #f6704d'});
+            }else {
+                console.log($(this).attr('data-parsley-pattern-message'));
 
-    },
-    findPassword:function () {
+                emailsignupbox.find('.account span').html('');
+                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+            }
 
+            if (!val) {
+                $(this).css({borderBottom: '1px solid #f6704d'});
+                $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
+                $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
+            }else if (val.length<4) {
+                signinbox.find('.account span').html($(this).attr('data-parsley-minlength-message'));
+                $(this).css({borderBottom: '1px solid #f6704d'});
+            }else {
+                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                $(this).parent().children('span').html('');
+            }
+        });
+        accountInput.keyup(function () {
+            if (flag1 > 0) {
+                var val = $(this).val();
+                //电话注册
+                if (!phoneReg.test(val) && $(this).parents('#phonesignupbox')[0] == phonesignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
+                    phonesignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
+                    $(this).css({borderBottom: '1px solid #f6704d'});
+                } else {
+                    phonesignupbox.find('.account span').html('');
+                    $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                }
+                if (!emailReg.test(val) && $(this).parents('#emailsignupbox')[0] == emailsignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
+                    emailsignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
+                    $(this).css({borderBottom: '1px solid #f6704d'});
+                } else {
+                    emailsignupbox.find('.account span').html('');
+                    $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                }
+            }
+        });
+
+        //密码
+        var passwordInput = $('.password input');
+        passwordInput.blur(function () {
+            flag2++;
+            var val = $(this).val();
+            if (!val) {
+                $(this).css({borderBottom: '1px solid #f6704d'});
+                $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
+                $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
+            }else if (val.length<6) {
+                phonesignupbox.find('.password span').html(passwordInput.attr('data-parsley-minlength-message'));
+                $(this).css({borderBottom: '1px solid #f6704d'});
+            }else {
+                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                $(this).parent().children('span').html('');
+            }
+        });
+        passwordInput.keyup(function () {
+            if (flag2 > 0) {
+                var val = $(this).val();
+                if (val.length < 6 && $(this).parents('#phonesignupbox')[0] == phonesignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
+                    phonesignupbox.find('.password span').html($(this).attr('data-parsley-minlength-message'));
+                    $(this).css({borderBottom: '1px solid #f6704d'});
+                } else {
+                    phonesignupbox.find('.password span').html('');
+                    $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                }
+            }
+        });
+        //验证码
+        var identifyingcodeInput = $('.identifyingcode input');
+        identifyingcodeInput.blur(function () {
+            flag3++;
+            var val = $(this).val();
+            if (!val) {
+                $(this).css({borderBottom: '1px solid #f6704d'});
+                $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
+                $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
+            }else {
+                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                $(this).parent().children('span').html('');
+            }
+        });
+        identifyingcodeInput.keyup(function () {
+            if (flag3 > 0) {
+                var val = $(this).val();
+                if (!val&&$(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
+                    identifyingcodeInput.next('span').html($(this).attr('data-parsley-required-message'));
+                    $(this).css({borderBottom: '1px solid #f6704d'});
+                } else {
+                    identifyingcodeInput.next('span').html('');
+                    $(this).css({borderBottom: '1px solid #1478f1'});
+                }
+            }
+        });
     },
     contentNav:function () {
         $('.content .left .title h2').click(function () {
