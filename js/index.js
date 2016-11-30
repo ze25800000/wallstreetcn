@@ -57,6 +57,7 @@ var wallstreetcnIndex = {
         var flag1 = 0;
         var flag2 = 0;
         var flag3 = 0;
+
         function Clear() {
             setTimeout(function () {
                 $('label').css({fontSize: 12, top: -13});
@@ -71,7 +72,7 @@ var wallstreetcnIndex = {
 
         this.signin.click(function () {
             signinbox.addClass('on').siblings().removeClass('on');
-            self.modal.show().animate({opacity: 1});
+            self.modal.show().stop().animate({opacity: 1});
             self.modal.children().animate({opacity: 1});
             Clear();
         });
@@ -98,16 +99,16 @@ var wallstreetcnIndex = {
         });
         $('.close').click(function () {
             Clear();
-            self.modal.hide();
+            self.modal.hide().stop().animate({opacity: 0});
         });
         this.modal.click(function () {
             Clear();
-            self.modal.hide();
+            self.modal.hide().stop().animate({opacity: 0});
         });
         $(window).keyup(function (e) {
             if (e.keyCode == 27) {
                 Clear();
-                self.modal.hide();
+                self.modal.hide().stop().animate({opacity: 0});
             }
         });
 
@@ -117,72 +118,61 @@ var wallstreetcnIndex = {
                 $(this).css({borderBottom: '1px solid #1478f0'});
             }
         });
-        /*input.blur(function () {
-            var val = $(this).val();
-            if (!val) {
-                $(this).css({borderBottom: '1px solid #f6704d'});
-                $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
-                $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
+
+        //使用正则验证邮箱和电话账户
+        function signUpOption(reg,value,box,thisinput) {
+            if (!reg.test(value)) {
+                box.find('.account span').html(thisinput.attr('data-parsley-pattern-message'));
+                thisinput.css({borderBottom: '1px solid #f6704d'});
+            }else {
+                box.find('.account span').html('');
+                thisinput.css({borderBottom: '1px solid rgb(220, 220, 220)'});
             }
-        });*/
-        //账户
+        }
+
+        //账户account
         var accountInput = $('.account input');
         accountInput.blur(function () {
             flag1++;
             var val = $(this).val();
-            //电话注册
-            if (!phoneReg.test(val)&&$(this).parents('#phonesignupbox')[0]==phonesignupbox[0]) {
-                phonesignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
-                $(this).css({borderBottom: '1px solid #f6704d'});
-            }else {
-                phonesignupbox.find('.account span').html('');
-                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
-            }
-            //邮箱注册
-            if (!emailReg.test(val)&&$(this).parents('#emailsignupbox')[0]==emailsignupbox[0]) {
-                emailsignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
-                $(this).css({borderBottom: '1px solid #f6704d'});
-            }else {
-                console.log($(this).attr('data-parsley-pattern-message'));
 
-                emailsignupbox.find('.account span').html('');
-                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+            //切换至登录窗口时执行
+            if ($(this).parents('#signinbox')[0]==signinbox[0]) {
+                if (val.length<4) {
+                    signinbox.find('.account span').html($(this).attr('data-parsley-minlength-message'));
+                    $(this).css({borderBottom: '1px solid #f6704d'});
+                }
             }
-
+            //切换至电话注册时执行
+            if ($(this).parents('#phonesignupbox')[0]==phonesignupbox[0]) {
+                signUpOption(phoneReg,val,phonesignupbox,$(this))
+            }
+            //切换至邮箱注册时执行
+            if ($(this).parents('#emailsignupbox')[0]==emailsignupbox[0]) {
+                signUpOption(emailReg,val,emailsignupbox,$(this))
+            }
+            //公共功能 当val为空时 改变label位置 然后想span中添加提示信息
             if (!val) {
                 $(this).css({borderBottom: '1px solid #f6704d'});
                 $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
                 $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
-            }else if (val.length<4) {
-                signinbox.find('.account span').html($(this).attr('data-parsley-minlength-message'));
-                $(this).css({borderBottom: '1px solid #f6704d'});
-            }else {
-                $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
-                $(this).parent().children('span').html('');
             }
         });
         accountInput.keyup(function () {
             if (flag1 > 0) {
                 var val = $(this).val();
-                //电话注册
-                if (!phoneReg.test(val) && $(this).parents('#phonesignupbox')[0] == phonesignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
-                    phonesignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
-                    $(this).css({borderBottom: '1px solid #f6704d'});
-                } else {
-                    phonesignupbox.find('.account span').html('');
-                    $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                    //在手机注册页面实现
+                if ($(this).parents('#phonesignupbox')[0] == phonesignupbox[0]) {
+                    signUpOption(phoneReg,val,phonesignupbox,$(this))
                 }
-                if (!emailReg.test(val) && $(this).parents('#emailsignupbox')[0] == emailsignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
-                    emailsignupbox.find('.account span').html($(this).attr('data-parsley-pattern-message'));
-                    $(this).css({borderBottom: '1px solid #f6704d'});
-                } else {
-                    emailsignupbox.find('.account span').html('');
-                    $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
+                    //在邮箱注册页面实现
+                if ($(this).parents('#emailsignupbox')[0] == emailsignupbox[0]) {
+                    signUpOption(emailReg,val,emailsignupbox,$(this))
                 }
             }
         });
 
-        //密码
+        //密码password
         var passwordInput = $('.password input');
         passwordInput.blur(function () {
             flag2++;
@@ -192,7 +182,7 @@ var wallstreetcnIndex = {
                 $(this).parent().children('label').animate({fontSize: 14, top: 8}, 200);
                 $(this).parent().children('span').html($(this).attr('data-parsley-required-message'));
             }else if (val.length<6) {
-                phonesignupbox.find('.password span').html(passwordInput.attr('data-parsley-minlength-message'));
+                $('.password span').html(passwordInput.attr('data-parsley-minlength-message'));
                 $(this).css({borderBottom: '1px solid #f6704d'});
             }else {
                 $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
@@ -202,16 +192,17 @@ var wallstreetcnIndex = {
         passwordInput.keyup(function () {
             if (flag2 > 0) {
                 var val = $(this).val();
-                if (val.length < 6 && $(this).parents('#phonesignupbox')[0] == phonesignupbox[0] && $(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
-                    phonesignupbox.find('.password span').html($(this).attr('data-parsley-minlength-message'));
+                if (val.length < 6) {
+                    $('.password span').html($(this).attr('data-parsley-minlength-message'));
                     $(this).css({borderBottom: '1px solid #f6704d'});
                 } else {
-                    phonesignupbox.find('.password span').html('');
+                    $('.password span').html('');
                     $(this).css({borderBottom: '1px solid rgb(220, 220, 220)'});
                 }
             }
         });
-        //验证码
+
+        //验证码code
         var identifyingcodeInput = $('.identifyingcode input');
         identifyingcodeInput.blur(function () {
             flag3++;
@@ -228,7 +219,7 @@ var wallstreetcnIndex = {
         identifyingcodeInput.keyup(function () {
             if (flag3 > 0) {
                 var val = $(this).val();
-                if (!val&&$(this).css('borderBottomColor') == 'rgb(246, 112, 77)') {
+                if (!val) {
                     identifyingcodeInput.next('span').html($(this).attr('data-parsley-required-message'));
                     $(this).css({borderBottom: '1px solid #f6704d'});
                 } else {

@@ -902,10 +902,12 @@
                 </div>
                 <div class="password">
                     <label for="pas">密码（不少于6位）</label>
-                    <input id="pas" type="password" data-parsley-required-message="请输入密码">
+                    <input id="pas" type="password" data-parsley-required-message="请输入密码"
+                                                    data-parsley-minlength-message="密码最短6位"
+                    >
                     <span></span>
                 </div>
-                <div class="text">
+                <div class="identifyingcode">
                     <label for="yan">图片识别码<b><img src="img/yanzhengma.png" width="40" height="20" alt=""><a href="#" class="iconfont icon-icon19"></a></b></label>
                     <input id="yan" type="text" data-parsley-required-message="请输入识别码">
                     <span></span>
@@ -948,7 +950,9 @@
                 </div>
                 <div class="password">
                     <label for="pas">请输入新密码密码(6-26字符)</label>
-                    <input id="pas" type="password" data-parsley-required-message="请输入密码">
+                    <input id="pas" type="password" data-parsley-required-message="请输入密码"
+                                                    data-parsley-minlength-message="密码最短6位"
+                    >
                     <span></span>
                 </div>
                 <button style="margin-top: 20px">立即重设</button>
